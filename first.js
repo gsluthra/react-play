@@ -5,10 +5,7 @@
   		}
   });
 
-  var element = React.createElement(MyHelloTag, {});
-
-
   ReactDOM.render(
-    element,
+    <MyHelloTag/>,
     document.getElementById('root')
   );
