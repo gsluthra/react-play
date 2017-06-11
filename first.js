@@ -1,28 +1,45 @@
 
-var MyLabelControl = (props) => {
-	return(
-		<h2 style={{fontSize: "250px"}}> 
-			{props.value} 
-		</h2>
-		);
-};
+class MyClock extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {date: new Date()};
+	}
 
+	render() {
+		return (
+			<div>
+				<h1> CLOCK TIME: {this.state.date.toLocaleTimeString()} </h1>
+			</div>
+			);
+	}
+
+	componentDidMount() {
+		setInterval (  
+			() => {this.tick()}, 
+			1000);
+	}
+
+	tick() {
+	    this.setState (
+		    {
+	    	  date: new Date()
+	    	}
+    	);
+  	}
+
+}
 
 var MyHelloTag = () => {
-	let time = new Date().toLocaleTimeString();
 	return(
 		<div> 
-			<h1>Hello Tag1</h1> 
-			<MyLabelControl value={time}/> 
+			<h1>Hello Clock</h1> 
+			<MyClock/> 
 		</div>
 		);
 };
  
-function tick() {
-	  ReactDOM.render(
-	    <MyHelloTag/>,
-	    document.getElementById('root')
-	  );
-}
-  
-setInterval(tick, 1000); //Note how in inspect element only the time element of the DOM is updated.
+
+ReactDOM.render(
+	<MyHelloTag/>,
+	document.getElementById('root')
+);
