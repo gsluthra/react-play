@@ -1,11 +1,17 @@
 
-var MyTimer = () => {
-	return(<div> It is {new Date().toLocaleTimeString()} </div>);
+var MyLabelControl = (props) => {
+	return(<div> The VALUE = {props.value} </div>);
 };
 
 
 var MyHelloTag = () => {
-	return(<div> <h1>Hello Tag1</h1> <MyTimer/> </div>);
+	let time = new Date().toLocaleTimeString();
+	return(
+		<div> 
+			<h1>Hello Tag1</h1> 
+			<MyLabelControl value={time}/> 
+		</div>
+		);
 };
  
 function tick() {
