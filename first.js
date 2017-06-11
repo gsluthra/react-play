@@ -1,6 +1,10 @@
 
 var MyLabelControl = (props) => {
-	return(<div> The VALUE = {props.value} </div>);
+	return(
+		<h2 style={{fontSize: "250px"}}> 
+			{props.value} 
+		</h2>
+		);
 };
 
 
