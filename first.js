@@ -20,11 +20,16 @@ class MyToggle extends React.Component {
 
 
 	render() {
-		return (
-			<button onClick={this.handleToggleClick} >
-				{this.state.isToggleOn ? 'State: ON' : 'State: OFF'}
-			</button>
-			);
+		if(this.props.show){
+			return (
+				<button onClick={this.handleToggleClick} >
+					{this.state.isToggleOn ? 'State: ON' : 'State: OFF'}
+				</button>
+				);			
+		}
+		else {
+			return ( <div/> );	
+		}
 	}
 }
 
@@ -103,7 +108,7 @@ var MyHelloTag = () => {
 			<MyActionHandlerClass/>
 			<br/>
 			<br/>
-			<MyToggle/>
+			<MyToggle show={true}/>
 		</div>
 		);
 };
