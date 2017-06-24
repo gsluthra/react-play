@@ -163,45 +163,45 @@ class MyCuteLittleForm extends React.Component {
 	render() {
 		const formView = 
 			<form onSubmit={this.handleSubmit}>
-
-				<label> 
+				<fieldset>
+					<legend> Enter details </legend>
 					Name: 
+					<br/>
 					<input name="nameOfPerson" type="text" value = {this.state.nameOfPerson} onChange = {this.handleOnChangeValue} />
-				</label>
-				<br/>
 			
-				<label> 
+					<br/>
 					Address: 
 					<br/>
 					<textarea name="address" value = {this.state.address} onChange = {this.handleOnChangeValue} />
-				</label>
-				<br/>
 
-				<label> 
-					State: 
+					<br/>
+					State:
 					<br/>
 					<select name="state" value = {this.state.state} onChange = {this.handleOnChangeValue}>
 						<option value="1">Maharashtra</option>
 						<option value="2">UP</option>
 						<option value="3">Tamil Nadu</option>
 					</select>
-				</label>
 				
 				<p/>
 			
-				<h4>Name: {this.state.nameOfPerson}</h4>
-				<h4>Address: {this.state.address}</h4>
-				<h4>State: {this.state.state}</h4>
-			
 				<input type="submit" value = "SUBMIT" />
+				</fieldset>
+
+				<fieldset>
+					<legend> DETAILS </legend>
+					
+					Name: {this.state.nameOfPerson} <br/>
+					Address: {this.state.address} <br/>
+					State: {this.state.state} <br/>
+				</fieldset>
+			
 
 			</form>
 
 		return (
 			<div>
-				<hr/>
 				{formView}
-				<hr/>
 			</div>
 			);
 	}
