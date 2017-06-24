@@ -144,7 +144,7 @@ var MyHelloTag = () => {
 			<br/>
 			<br/>
 			<MyToggle showAsButton={true} hide={false}/>
-			<MyList numbers={[1,2,3,4,5]}/>
+			<MyList numbers={["First","Second","Third","Fourth","Fifth"]}/>
 		</div>
 		);
 };
