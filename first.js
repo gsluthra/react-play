@@ -133,6 +133,52 @@ class MyList extends React.Component {
 }
 
 
+class MyCuteLittleForm extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			nameOfPerson: 'Enter name here'
+		};
+
+		this.handleOnChangeNameOfPerson = this.handleOnChangeNameOfPerson.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	handleSubmit(e) {
+		alert("Form has been submitted, with name: "+ this.state.nameOfPerson);
+		e.preventDefault();
+
+	}
+
+	handleOnChangeNameOfPerson(e) {
+		this.setState({nameOfPerson: e.target.value.toUpperCase()});
+	}
+
+	render() {
+		const formView = 
+			<form onSubmit={this.handleSubmit}>
+				<label> 
+					Name: 
+					<input type="text" value = {this.state.nameOfPerson} onChange = {this.handleOnChangeNameOfPerson} />
+				</label>
+				<input type="submit" value = "SUBMIT" />
+
+			</form>
+
+		return (
+			<div>
+				<hr/>
+				{formView}
+				<hr/>
+			</div>
+			);
+	}
+
+
+}
+
+
 var MyHelloTag = () => {
 	return(
 		<div> 
@@ -145,6 +191,7 @@ var MyHelloTag = () => {
 			<br/>
 			<MyToggle showAsButton={true} hide={false}/>
 			<MyList numbers={["First","Second","Third","Fourth","Fifth"]}/>
+			<MyCuteLittleForm/>
 		</div>
 		);
 };
