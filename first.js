@@ -138,15 +138,17 @@ class MyCuteLittleForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			nameOfPerson: 'Enter name here'
+			nameOfPerson: 'Enter name here',
+			address: 'Enter address here'
 		};
 
 		this.handleOnChangeNameOfPerson = this.handleOnChangeNameOfPerson.bind(this);
+		this.handleOnChangeAddress = this.handleOnChangeAddress.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleSubmit(e) {
-		alert("Form has been submitted, with name: "+ this.state.nameOfPerson);
+		alert("Form has been submitted, with name: "+ this.state.nameOfPerson + " address: "+ this.state.address);
 		e.preventDefault();
 
 	}
@@ -155,6 +157,11 @@ class MyCuteLittleForm extends React.Component {
 		this.setState({nameOfPerson: e.target.value.toUpperCase()});
 	}
 
+	handleOnChangeAddress(e) {
+		this.setState({address: e.target.value.toUpperCase()});
+	}
+
+
 	render() {
 		const formView = 
 			<form onSubmit={this.handleSubmit}>
@@ -162,6 +169,13 @@ class MyCuteLittleForm extends React.Component {
 					Name: 
 					<input type="text" value = {this.state.nameOfPerson} onChange = {this.handleOnChangeNameOfPerson} />
 				</label>
+				<br/>
+				<label> 
+					Address: 
+					<br/>
+					<textarea value = {this.state.address} onChange = {this.handleOnChangeAddress} />
+				</label>
+				<br/>
 				<input type="submit" value = "SUBMIT" />
 
 			</form>
