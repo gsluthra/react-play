@@ -139,11 +139,14 @@ class MyCuteLittleForm extends React.Component {
 		super(props);
 		this.state = {
 			nameOfPerson: 'Enter name here',
-			address: 'Enter address here'
+			address: 'Enter address here',
+			state: '2'
 		};
 
 		this.handleOnChangeNameOfPerson = this.handleOnChangeNameOfPerson.bind(this);
 		this.handleOnChangeAddress = this.handleOnChangeAddress.bind(this);
+		this.handleOnChangeState = this.handleOnChangeState.bind(this);
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -161,21 +164,44 @@ class MyCuteLittleForm extends React.Component {
 		this.setState({address: e.target.value.toUpperCase()});
 	}
 
+	handleOnChangeState(e) {
+		this.setState({state: e.target.value});
+	}
+
 
 	render() {
 		const formView = 
 			<form onSubmit={this.handleSubmit}>
+
 				<label> 
 					Name: 
 					<input type="text" value = {this.state.nameOfPerson} onChange = {this.handleOnChangeNameOfPerson} />
 				</label>
 				<br/>
+			
 				<label> 
 					Address: 
 					<br/>
 					<textarea value = {this.state.address} onChange = {this.handleOnChangeAddress} />
 				</label>
 				<br/>
+
+				<label> 
+					State: 
+					<br/>
+					<select value = {this.state.state} onChange = {this.handleOnChangeState}>
+						<option value="1">Maharashtra</option>
+						<option value="2">UP</option>
+						<option value="3">Tamil Nadu</option>
+					</select>
+				</label>
+				
+				<p/>
+			
+				<h4>Name: {this.state.nameOfPerson}</h4>
+				<h4>Address: {this.state.address}</h4>
+				<h4>State: {this.state.state}</h4>
+			
 				<input type="submit" value = "SUBMIT" />
 
 			</form>
