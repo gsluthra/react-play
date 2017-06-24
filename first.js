@@ -109,6 +109,30 @@ class MyClock extends React.Component {
 
 }
 
+
+class MyList extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+
+		const numbers = this.props.numbers;
+		const listItems = numbers.map(
+							(x) => 
+								<li key={x}> Value: {x} </li>
+						   );
+
+		return (
+			<ul>
+				{listItems}
+			</ul>
+			);
+	}
+
+}
+
+
 var MyHelloTag = () => {
 	return(
 		<div> 
@@ -120,6 +144,7 @@ var MyHelloTag = () => {
 			<br/>
 			<br/>
 			<MyToggle showAsButton={true} hide={false}/>
+			<MyList numbers={[1,2,3,4,5]}/>
 		</div>
 		);
 };
