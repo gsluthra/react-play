@@ -22,6 +22,10 @@ class MyToggle extends React.Component {
 	render() {
 		let button = null;
 
+		if(this.props.hide) {
+			return null; // Return null stops the component from being rendered. 
+		}
+
 		if(this.props.showAsButton){
 			button = <button onClick={this.handleToggleClick} >
 					     {this.state.isToggleOn ? 'State: ON' : 'State: OFF'}
@@ -115,7 +119,7 @@ var MyHelloTag = () => {
 			<MyActionHandlerClass/>
 			<br/>
 			<br/>
-			<MyToggle showAsButton={true}/>
+			<MyToggle showAsButton={true} hide={false}/>
 		</div>
 		);
 };
