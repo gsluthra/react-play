@@ -143,9 +143,7 @@ class MyCuteLittleForm extends React.Component {
 			state: '2'
 		};
 
-		this.handleOnChangeNameOfPerson = this.handleOnChangeNameOfPerson.bind(this);
-		this.handleOnChangeAddress = this.handleOnChangeAddress.bind(this);
-		this.handleOnChangeState = this.handleOnChangeState.bind(this);
+		this.handleOnChangeValue = this.handleOnChangeValue.bind(this);
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -156,16 +154,9 @@ class MyCuteLittleForm extends React.Component {
 
 	}
 
-	handleOnChangeNameOfPerson(e) {
-		this.setState({nameOfPerson: e.target.value.toUpperCase()});
-	}
-
-	handleOnChangeAddress(e) {
-		this.setState({address: e.target.value.toUpperCase()});
-	}
-
-	handleOnChangeState(e) {
-		this.setState({state: e.target.value});
+	handleOnChangeValue(e) {
+		const controlName = e.target.name;
+		this.setState({[controlName]: e.target.value});
 	}
 
 
@@ -175,21 +166,21 @@ class MyCuteLittleForm extends React.Component {
 
 				<label> 
 					Name: 
-					<input type="text" value = {this.state.nameOfPerson} onChange = {this.handleOnChangeNameOfPerson} />
+					<input name="nameOfPerson" type="text" value = {this.state.nameOfPerson} onChange = {this.handleOnChangeValue} />
 				</label>
 				<br/>
 			
 				<label> 
 					Address: 
 					<br/>
-					<textarea value = {this.state.address} onChange = {this.handleOnChangeAddress} />
+					<textarea name="address" value = {this.state.address} onChange = {this.handleOnChangeValue} />
 				</label>
 				<br/>
 
 				<label> 
 					State: 
 					<br/>
-					<select value = {this.state.state} onChange = {this.handleOnChangeState}>
+					<select name="state" value = {this.state.state} onChange = {this.handleOnChangeValue}>
 						<option value="1">Maharashtra</option>
 						<option value="2">UP</option>
 						<option value="3">Tamil Nadu</option>
