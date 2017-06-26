@@ -210,6 +210,99 @@ class MyCuteLittleForm extends React.Component {
 }
 
 
+
+class MyTemperatureEnteringComponent extends React.Component {
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+
+		const name = this.props.type;
+		
+		let control = 
+			<form>
+				<fieldset> 
+					<legend> Enter temperature in {name} </legend>
+					<input type="number" name={name} value={this.props.temperatureValue} onChange={this.props.onChangeFunction}/> 
+				</fieldset>
+			</form>;
+
+
+		return ( <div> {control} </div>	);
+	}
+
+}
+
+
+class MyTemperatureEnteringWidget extends React.Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			c_temp : 0,
+			f_temp : this.convertCtoF(0)
+		};
+
+		this.handleOnChangeValue = this.handleOnChangeValue.bind(this);
+
+	}
+
+	convertCtoF(tempInC){
+		return (tempInC * 9 / 5) + 32.0;
+	}
+
+	convertFtoC(tempInF){
+		return (tempInF - 32) * 5 / 9;	
+	}
+
+	handleOnChangeValue(e) {
+		const controlName = e.target.name;
+		const temperature = e.target.value;
+		let f_temp = -1000, c_temp = -1000; //some arbitary outside value
+
+		if(controlName === "celcius"){
+			console.log('temperature entered in celcius control. recvd value = '+ temperature);
+			c_temp = temperature;
+			f_temp = this.convertCtoF(temperature);
+
+		} else if (controlName === 'farenheit') {
+			console.log('temperature entered in farenheit control. recvd value = '+ temperature);
+			f_temp = temperature;
+			c_temp = this.convertFtoC(temperature);
+		} else {
+			console.log('WTF. Which control did this come from? Control Name: '+ controlName);
+		}
+
+		this.setState({
+			f_temp : [f_temp],
+			c_temp : [c_temp]
+		});
+
+	}
+
+	render() {
+
+		return (
+			<div>
+				<fieldset>
+					<legend> TEMP CONTROL </legend>
+					<MyTemperatureEnteringComponent type='celcius' temperatureValue={this.state.c_temp} onChangeFunction={this.handleOnChangeValue}/>
+					<MyTemperatureEnteringComponent type='farenheit' temperatureValue={this.state.f_temp} onChangeFunction={this.handleOnChangeValue}/>
+
+				</fieldset>
+			</div>
+			);
+	}
+
+
+}
+
+
+
+
 var MyHelloTag = () => {
 	return(
 		<div> 
@@ -221,8 +314,12 @@ var MyHelloTag = () => {
 			<br/>
 			<br/>
 			<MyToggle showAsButton={true} hide={false}/>
+			<br/>
 			<MyList numbers={["First","Second","Third","Fourth","Fifth"]}/>
+			<br/>
 			<MyCuteLittleForm/>
+			<br/>
+			<MyTemperatureEnteringWidget/>
 		</div>
 		);
 };
