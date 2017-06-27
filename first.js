@@ -307,6 +307,35 @@ class MyTemperatureEnteringWidget extends React.Component {
 }
 
 
+class MyHolderWidget extends React.Component {
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<div>
+				<fieldset>
+					<legend> Parent Container with Space for inserting children </legend>
+					{this.props.children}
+				</fieldset>
+			</div>
+
+			);
+	}
+}
+
+var MyRichWidget = () => {
+	return(
+		 <MyHolderWidget>
+		 	<h2> Child stuff </h2>
+		 	<h2> Child 2 stuff </h2>
+		 	<MyClock/> 
+		 </MyHolderWidget>
+		);	
+};
+
 
 
 var MyHelloTag = () => {
@@ -326,6 +355,7 @@ var MyHelloTag = () => {
 			<MyCuteLittleForm/>
 			<br/>
 			<MyTemperatureEnteringWidget/>
+			<MyRichWidget/>
 		</div>
 		);
 };
