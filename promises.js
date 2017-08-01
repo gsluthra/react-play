@@ -18,6 +18,6 @@ promise1
 })
 .then(console.log)
 .catch(error => {
-    console.log('ERROR OCCURRED')
+    console.log('ERROR OCCURRED');
     return console.log(error);
 });
